@@ -1,7 +1,7 @@
 pipeline {
     agent {node {label 'qa'}}
     stages {
-        stage('Build') {
+        stage('Build development') {
             when {
                 branch 'develop'
             }
