@@ -20,10 +20,11 @@ pipeline {
                 recipientProviders: [[$class: 'DevelopersRecipientProvider'],
                 [$class: 'RequestRecipientProvider']]
             )
+        }
         success {
             emailtext(
                 subject: "Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'",
-                body: """<p>A Build foi feita com sucesso <a href="${env.BUILD_URL}">${env.JOB_NAME}</a></p>""",
+                body: "Sucess o no Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'",
                 to: "danpayne21@gmail.com"
             )
         }
