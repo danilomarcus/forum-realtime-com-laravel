@@ -12,4 +12,20 @@ pipeline {
             }
         }       
     }
+    post {
+        failure {
+            emailtext(
+                subject: "Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'"
+                body: "Job deu ruim '${env.JOB_NAME} ${env.BUILD_NUMBER}'"
+                recipientProviders: [[$class: 'DevelopersRecipientProvider'],
+                [$class: 'RequestRecipientProvider']]
+            )
+        success {
+            emailtext(
+                subject: "Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'"
+                body: "Sucess o no Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'"
+                to: "danpayne21@gmail.com"
+            )
+        }
+    }
 }
