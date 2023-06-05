@@ -24,7 +24,7 @@ pipeline {
         success {
             emailtext(
                 subject: "Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'",
-                body: "Sucess o no Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'",
+                body: "Sucess no Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'",
                 to: "danpayne21@gmail.com"
             )
         }
