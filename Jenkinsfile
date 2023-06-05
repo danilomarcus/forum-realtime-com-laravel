@@ -18,7 +18,7 @@ pipeline {
                 subject: "Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'",
                 body: """<p>A Build Falhou <a href="${env.BUILD_URL}">${env.JOB_NAME}</a></p>""",
                 recipientProviders: [[$class: 'DevelopersRecipientProvider'],
-                [$class: 'RequestRecipientProvider']]
+                [$class: 'RequesterRecipientProvider']]
             )
         }
         success {
