@@ -10,7 +10,7 @@ pipeline {
         stage('teste de local') {
             agent {node {label 'master'}}
             steps {
-                sh 'ls /home/ubuntu/'
+                sh 'sudo ls /home/ubuntu/'
             }
         }
         stage('configurar servidor por ansible') {
