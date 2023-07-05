@@ -1,17 +1,20 @@
 pipeline {
-    agent {node {label 'qa'}}
+    agent none
     stages {
         stage('Build development') {
+            agent {node {label 'qa'}}
             steps {
                 sh 'composer install'
             }
         }
         stage('configurar servidor') {
+            agent {node {label 'mestre'}}
             steps {
                 sh 'ansible-playbook /home/ubuntu/laravel/mysql.yml'
             }
         }  
         stage('teste') {
+            agent {node {label 'qa'}}
             steps {
                 sh 'vendor/bin/phpunit'
             }
