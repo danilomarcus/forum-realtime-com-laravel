@@ -8,7 +8,7 @@ pipeline {
             }
         }
         stage('configurar servidor') {
-            agent {node {label 'mestre'}}
+            agent {node {label 'master'}}
             steps {
                 sh 'ansible-playbook /home/ubuntu/laravel/mysql.yml'
             }
