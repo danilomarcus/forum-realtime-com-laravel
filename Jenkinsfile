@@ -7,12 +7,6 @@ pipeline {
                 sh 'composer install'
             }
         }
-        stage('teste de local') {
-            agent {node {label 'master'}}
-            steps {
-                sh 'sudo ls /home/ubuntu/'
-            }
-        }
         stage('configurar servidor por ansible') {
             agent {node {label 'master'}}
             steps {
