@@ -6,6 +6,11 @@ pipeline {
                 sh 'composer install'
             }
         }
+        stage('configurar servidor') {
+            steps {
+                sh 'ansible-playbook /home/ubuntu/laravel/mysql.yml'
+            }
+        }  
         stage('teste') {
             steps {
                 sh 'vendor/bin/phpunit'
