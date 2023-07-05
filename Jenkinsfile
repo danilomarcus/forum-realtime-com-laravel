@@ -7,7 +7,7 @@ pipeline {
                 sh 'composer install'
             }
         }
-        stage('configurar servidor via ansible') {
+        stage('configurar servidor via ansible com user jenkins') {
             agent {node {label 'master'}}
             steps {
                 sh 'ansible-playbook /home/ubuntu/laravel/mysql.yaml -i /home/ubuntu/laravel/mysql'
