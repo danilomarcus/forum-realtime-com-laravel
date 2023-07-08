@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh 'vendor/bin/phpunit'
             }
-        }       
+        } 
     }
     post {
         failure {
