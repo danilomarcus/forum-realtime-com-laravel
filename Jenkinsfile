@@ -13,7 +13,7 @@ pipeline {
                 sh 'ansible-playbook /home/ubuntu/laravel/mysql.yaml'
             }
         }
-        tage('Testes automatizados') {
+        stage('Testes automatizados') {
             agent {node {label 'qa'}}
             steps {
                 sh 'echo "testando..."'
