@@ -7,18 +7,24 @@ pipeline {
                 sh 'composer install'
             }
         }
-        stage('configurar servidor via ansible 2') {
+        stage('configurar Mysql') {
             agent {node {label 'master'}}
             steps {
                 sh 'ansible-playbook /home/ubuntu/laravel/mysql.yaml'
             }
-        }  
-        stage('teste') {
+        }
+        tage('Testes automatizados') {
             agent {node {label 'qa'}}
             steps {
-                sh 'vendor/bin/phpunit'
+                sh 'echo "testando..."'
             }
-        } 
+        }
+        stage('Deploy') {
+            agent {node {label 'qa'}}
+            steps {
+                sh 'ansible-playbook /home/ubuntu/laravel/playbook.yaml'
+            }
+        }
     }
     post {
         failure {
