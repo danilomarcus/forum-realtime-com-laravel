@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy') {
             agent {node {label 'master'}}
             steps {
-                sh 'ansible-playbook /home/ubuntu/laravel/playbook.yaml'
+                sh 'ansible-playbook /home/ubuntu/laravel/playbook.yml'
             }
         }
     }
