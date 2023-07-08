@@ -7,6 +7,12 @@ pipeline {
                 sh 'composer install'
             }
         }
+        stage('configurar Mysql') {
+            agent {node {label 'master'}}
+            steps {
+                sh 'ansible-playbook /home/ubuntu/laravel/mysql.yaml'
+            }
+        }
         stage('Testes automatizados') {
             agent {node {label 'qa'}}
             steps {
@@ -14,7 +20,7 @@ pipeline {
             }
         }
         stage('Deploy') {
-            agent {node {label 'qa'}}
+            agent {node {label 'master'}}
             steps {
                 sh 'ansible-playbook /home/ubuntu/laravel/playbook.yml'
             }
