@@ -8,19 +8,22 @@ pipeline {
             }
         }
         stage('configurar Mysql') {
-            agent {node {label 'master'}}
+            agent {node {label 'qa2'}}
             steps {
                 sh 'ansible-playbook /home/ubuntu/laravel/mysql.yaml'
             }
         }
         stage('Testes automatizados') {
-            agent {node {label 'qa'}}
+            agent {node {label 'qa2'}}
             steps {
                 sh 'echo "testando..."'
             }
         }
         stage('Deploy') {
-            agent {node {label 'master'}}
+            agent {node {label 'qa2'}}
+            when {
+                branch 'develop'
+            }
             steps {
                 sh 'ansible-playbook /home/ubuntu/laravel/playbook.yml'
             }
