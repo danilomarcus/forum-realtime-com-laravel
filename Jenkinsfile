@@ -7,7 +7,7 @@ pipeline {
                 sh 'composer install'
             }
         }
-        stage('Pre-teste checando banco Mysql') {
+        stage('Pre-teste banco Mysql') {
             agent {node {label 'qa2'}}
             steps {
                 sh 'ansible-playbook /home/ubuntu/laravel/mysql.yaml -i /home/ubuntu/laravel/mysql'
