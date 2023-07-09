@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Build development') {
-            agent {node {label 'qa'}}
+            agent {node {label 'qa2'}}
             steps {
                 sh 'composer install'
             }
@@ -14,7 +14,7 @@ pipeline {
             }
         }
         stage('Testes automatizados') {
-            agent {node {label 'qa'}}
+            agent {node {label 'qa2'}}
             steps {
                 sh 'echo "testando..."'
             }
