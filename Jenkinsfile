@@ -5,6 +5,7 @@ pipeline {
             agent {node {label 'qa2'}}
             steps {
                 sh 'composer install'
+                sh 'rm index.nginx-debian.html'
             }
         }
         stage('Pre-teste banco Mysql') {
