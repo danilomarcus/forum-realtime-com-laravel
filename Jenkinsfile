@@ -5,7 +5,6 @@ pipeline {
             agent {node {label 'qa2'}}
             steps {
                 sh 'composer install'
-                sh 'rm index.nginx-debian.html'
             }
         }
         stage('Pre-teste banco Mysql') {
@@ -18,6 +17,13 @@ pipeline {
             agent {node {label 'qa2'}}
             steps {
                 sh 'echo "testando..."'
+            }
+        }
+        stage('Packaging app to deploy') {
+            agent {node {label 'qa2'}}
+            steps {
+                sh 'rm -rf deploy.zip'
+                zip zipfile: 'deploy.zip', archive: true
             }
         }
         stage('Deploy') {
