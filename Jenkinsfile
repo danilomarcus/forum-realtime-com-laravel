@@ -23,7 +23,7 @@ pipeline {
             agent {node {label 'qa2'}}
             steps {
                 sh 'rm -rf deploy.zip'
-                zip zipfile: 'deploy.zip', archive: true
+                zip zipFile: 'deploy.zip', archive: true
             }
         }
         stage('Deploy') {
