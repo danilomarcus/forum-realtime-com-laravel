@@ -26,13 +26,22 @@ pipeline {
                 zip zipFile: 'deploy.zip', archive: true
             }
         }
-        stage('Deploy') {
+        stage('Deploy Develop') {
             agent {node {label 'qa2'}}
             when {
                 branch 'develop'
             }
             steps {
                 sh 'ansible-playbook /home/ubuntu/laravel/playbook.yml'
+            }
+        }
+        stage('Deploy Production') {
+            agent {node {label 'qa2'}}
+            when {
+                branch 'master'
+            }
+            steps {
+                sh 'ansible-playbook /home/ubuntu/laravel/playbook-prod.yml'
             }
         }
     }
