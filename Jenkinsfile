@@ -58,7 +58,7 @@ pipeline {
             emailext(
                 subject: "Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'",
                 body: "Sucesso no Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'",
-                to: "danpayne21@gmail.com"
+                to: "danpayne21@gmail.com,caiovaralta@gmail.com"
             )
         }
     }
