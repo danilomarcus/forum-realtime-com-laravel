@@ -57,7 +57,7 @@ pipeline {
         success {
             emailext(
                 subject: "Job '${env.JOB_NAME} ${env.BUILD_NUMBER}'",
-                body: "Sucesso no Job '${env.JOB_NAME} ${env.BUILD_NUMBER}' na branch '${env.GIT_BRANCH}' commit hash: '${env.GIT_COMMIT}'",
+                body: "Sucesso no Job '${env.JOB_NAME} ${env.BUILD_NUMBER}' na branch ${GIT_BRANCH} commit hash: ${GIT_COMMIT}",
                 to: "danpayne21@gmail.com,caiovaralta@gmail.com"
             )
         }
